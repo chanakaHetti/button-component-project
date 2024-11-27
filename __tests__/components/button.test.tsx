@@ -16,14 +16,14 @@ describe('Button Component', () => {
   it('should renders with green solid variant', () => {
     render(<Button {...defaultProps} color="green" />);
     const button = screen.getByRole('button', { name: 'Test Button' });
-    expect(button).toHaveClass('bg-green-600 text-white hover:bg-green-700');
+    expect(button).toHaveClass('bg-green-700 text-white hover:bg-green-800');
   });
 
   it('should renders with green outline variant', () => {
     render(<Button {...defaultProps} color="green" buttonStyle="outline" />);
     const button = screen.getByRole('button', { name: 'Test Button' });
     expect(button).toHaveClass(
-      'border-green-600 text-green-600 bg-transparent'
+      'border-green-700 text-green-700 bg-transparent'
     );
   });
 

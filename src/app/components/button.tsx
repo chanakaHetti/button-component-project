@@ -7,22 +7,22 @@ import { ButtonProps, ButtonSize } from '../types';
 const buttonStyles = {
   green: {
     solid: {
-      base: 'bg-green-600 text-white hover:bg-green-700 focus:ring-green-300',
-      border: 'border-green-600',
+      base: 'bg-green-700 text-white hover:bg-green-800 focus:ring-green-300',
+      border: 'border-green-700',
     },
     outline: {
-      base: 'border border-green-600 text-green-600 bg-transparent hover:bg-green-50 focus:ring-green-200',
-      border: 'border-green-600',
+      base: 'border border-green-700 text-green-700 bg-transparent hover:bg-green-50 focus:ring-green-200',
+      border: 'border-green-700',
     },
   },
   dark: {
     solid: {
-      base: 'bg-gray-800 text-white hover:bg-gray-700 focus:ring-gray-300',
-      border: 'border-gray-800',
+      base: 'bg-gray-900 text-white hover:bg-gray-800 focus:ring-gray-300',
+      border: 'border-gray-900',
     },
     outline: {
-      base: 'border border-gray-800 text-gray-800 bg-transparent hover:bg-gray-100 focus:ring-gray-200',
-      border: 'border-gray-800',
+      base: 'border border-gray-900 text-gray-900 bg-transparent hover:bg-gray-100 focus:ring-gray-200',
+      border: 'border-gray-900',
     },
   },
 };
