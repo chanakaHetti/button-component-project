@@ -31,7 +31,7 @@ npm run dev
 // Run the Storybook
 npm run storybook
 
-// RUn the Unit testing
+// Run the Unit testing
 npm test
 ```
 
