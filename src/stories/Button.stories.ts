@@ -10,7 +10,7 @@ const meta = {
       control: { type: 'select' },
       options: ['default', 'green', 'dark'],
     },
-    style: {
+    buttonStyle: {
       control: { type: 'select' },
       options: ['solid', 'outline'],
     },
@@ -20,6 +20,12 @@ const meta = {
     },
   },
   parameters: {
+    docs: {
+      description: {
+        component:
+          'A customizable button component with different styles, colors, and sizes.',
+      },
+    },
     // Add accessibility checks
     a11y: {
       disable: false,

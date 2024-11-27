@@ -34,14 +34,13 @@ const sizeStyles: Record<ButtonSize, string> = {
 };
 
 /**
- * Advanced Button Component
+ * A customizable button component with different styles, colors, and sizes.
  *
- * Features:
- * - Color variants (green, dark)
- * - Style options (solid, outline)
- * - Multiple sizes
- * - Full width option
- * - Accessibility
+ * @param {string} color - The color of the button ('green', 'dark')
+ * @param {string} buttonStyle - The button style ('solid', 'outline')
+ * @param {string} size - The size of the button ('sm', 'md', 'lg')
+ * @param {boolean} disabled - Whether the button is disabled
+ * @param {boolean} fullWidth - Whether the button should take the full width
  */
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
