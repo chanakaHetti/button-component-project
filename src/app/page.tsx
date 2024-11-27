@@ -30,19 +30,31 @@ export default function Home() {
       </div>
 
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold">Default Variants</h2>
-        <div className="flex flex-wrap gap-4">
-          <Button>Default Solid</Button>
-          <Button buttonStyle="outline">Default Outline</Button>
-        </div>
-      </div>
-
-      <div className="space-y-4">
         <h2 className="text-xl font-semibold">Sizes</h2>
         <div className="flex flex-wrap gap-4 items-center">
           <Button size="sm">Small</Button>
           <Button size="md">Medium</Button>
           <Button size="lg">Large</Button>
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <h2 className="text-xl font-semibold">Disabled</h2>
+        <div className="flex flex-wrap gap-4 items-center">
+          <Button disabled>Disabled</Button>
+          <Button color="dark" disabled>
+            Disabled
+          </Button>
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <h2 className="text-xl font-semibold">Full Width</h2>
+        <div className="flex flex-wrap gap-4 items-center">
+          <Button fullWidth>Full Width</Button>
+          <Button fullWidth color="dark">
+            Full Width
+          </Button>
         </div>
       </div>
     </div>

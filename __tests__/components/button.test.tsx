@@ -13,20 +13,13 @@ describe('Button Component', () => {
     children: 'Test Button',
   };
 
-  it('renders with default props', () => {
-    render(<Button {...defaultProps} />);
-    const button = screen.getByRole('button', { name: 'Test Button' });
-    expect(button).toBeInTheDocument();
-    expect(button).toHaveClass('bg-blue-500 text-white hover:bg-blue-600');
-  });
-
-  it('renders with green solid variant', () => {
+  it('should renders with green solid variant', () => {
     render(<Button {...defaultProps} color="green" />);
     const button = screen.getByRole('button', { name: 'Test Button' });
     expect(button).toHaveClass('bg-green-600 text-white hover:bg-green-700');
   });
 
-  it('renders with green outline variant', () => {
+  it('should renders with green outline variant', () => {
     render(<Button {...defaultProps} color="green" buttonStyle="outline" />);
     const button = screen.getByRole('button', { name: 'Test Button' });
     expect(button).toHaveClass(
@@ -34,19 +27,19 @@ describe('Button Component', () => {
     );
   });
 
-  it('applies the correct size styles', () => {
+  it('should applies the correct size styles', () => {
     render(<Button {...defaultProps} size="lg" />);
     const button = screen.getByRole('button', { name: 'Test Button' });
     expect(button).toHaveClass('px-6 py-3 text-base');
   });
 
-  it('renders as full width when `fullWidth` is true', () => {
+  it('should renders as full width when `fullWidth` is true', () => {
     render(<Button {...defaultProps} fullWidth />);
     const button = screen.getByRole('button', { name: 'Test Button' });
     expect(button).toHaveClass('w-full');
   });
 
-  it('disables the button when `disabled` is true', () => {
+  it('should disables the button when `disabled` is true', () => {
     render(<Button {...defaultProps} disabled />);
     const button = screen.getByRole('button', { name: 'Test Button' });
     expect(button).toBeDisabled();
@@ -55,13 +48,13 @@ describe('Button Component', () => {
     );
   });
 
-  it('applies custom classes passed via `className`', () => {
+  it('should applies custom classes passed via `className`', () => {
     render(<Button {...defaultProps} className="custom-class" />);
     const button = screen.getByRole('button', { name: 'Test Button' });
     expect(button).toHaveClass('custom-class');
   });
 
-  it('fires onClick event when clicked', async () => {
+  it('should fires onClick event when clicked', async () => {
     const onClick = jest.fn();
     render(<Button {...defaultProps} onClick={onClick} />);
     const button = screen.getByRole('button', { name: 'Test Button' });
@@ -69,13 +62,13 @@ describe('Button Component', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
-  it('applies `aria-label` properly', () => {
+  it('should applies `aria-label` properly', () => {
     render(<Button {...defaultProps} aria-label="Custom Label" />);
     const button = screen.getByRole('button', { name: 'Custom Label' });
     expect(button).toBeInTheDocument();
   });
 
-  it('does not focus on the button when `disabled`', () => {
+  it('should does not focus on the button when `disabled`', () => {
     render(<Button {...defaultProps} disabled />);
     const button = screen.getByRole('button', { name: 'Test Button' });
     expect(button).toHaveAttribute('tabindex', '-1');

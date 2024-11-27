@@ -32,13 +32,6 @@ export default meta;
 // Types for stories
 type Story = StoryObj<typeof Button>;
 
-// Default Button Story
-export const Default: Story = {
-  args: {
-    children: 'Default Button',
-  },
-};
-
 // Variant Stories
 export const GreenSolid: Story = {
   args: {
@@ -53,6 +46,22 @@ export const GreenOutline: Story = {
     color: 'green',
     buttonStyle: 'outline',
     children: 'Green Outline',
+  },
+};
+
+export const GreenDisabled: Story = {
+  args: {
+    disabled: true,
+    color: 'green',
+    children: 'Green Disabled',
+  },
+};
+
+export const GreenFullWidth: Story = {
+  args: {
+    color: 'green',
+    children: 'Green Full Width',
+    fullWidth: true,
   },
 };
 
@@ -72,6 +81,22 @@ export const DarkOutline: Story = {
   },
 };
 
+export const DarkDisabled: Story = {
+  args: {
+    disabled: true,
+    color: 'dark',
+    children: 'Dark Disabled',
+  },
+};
+
+export const DarkFullWidth: Story = {
+  args: {
+    color: 'dark',
+    children: 'Dark Full Width',
+    fullWidth: true,
+  },
+};
+
 // Size Variants
 export const SmallButton: Story = {
   args: {
@@ -80,17 +105,16 @@ export const SmallButton: Story = {
   },
 };
 
+export const MediumButton: Story = {
+  args: {
+    size: 'md',
+    children: 'Medium Button',
+  },
+};
+
 export const LargeButton: Story = {
   args: {
     size: 'lg',
     children: 'Large Button',
-  },
-};
-
-// Disabled State
-export const DisabledButton: Story = {
-  args: {
-    disabled: true,
-    children: 'Disabled Button',
   },
 };

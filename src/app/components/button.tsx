@@ -25,16 +25,6 @@ const buttonStyles = {
       border: 'border-gray-800',
     },
   },
-  default: {
-    solid: {
-      base: 'bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-300',
-      border: 'border-blue-500',
-    },
-    outline: {
-      base: 'border border-blue-500 text-blue-500 bg-transparent hover:bg-blue-50 focus:ring-blue-200',
-      border: 'border-blue-500',
-    },
-  },
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
@@ -57,7 +47,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,
-      color,
+      color = 'green',
       buttonStyle = 'solid',
       size = 'md',
       fullWidth = false,
@@ -69,9 +59,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     // Determine the correct style configuration
-    const variantConfig = color
-      ? buttonStyles[color][buttonStyle]
-      : buttonStyles.default[buttonStyle];
+    const variantConfig = buttonStyles[color][buttonStyle];
 
     const combinedClassName = twMerge(
       'rounded-md transition-all duration-200 ease-in-out',
