@@ -19,10 +19,19 @@ Documented Code: Clear comments are provided throughout the code to explain the 
 ## Setup
 
 ```bash
+// Clone the repository
 git clone https://github.com/chanakaHetti/button-component-project.git
+
+// Install dependencies
 npm install
-npm start
+
+// Run the application
+npm run dev
+
+// Run the Storybook
 npm run storybook
+
+// Run the Unit testing
 npm test
 ```
 
