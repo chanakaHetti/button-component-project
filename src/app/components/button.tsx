@@ -1,4 +1,6 @@
-import React, { forwardRef } from 'react';
+'use client';
+
+import React, { forwardRef, MouseEvent } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 import { ButtonProps, ButtonSize } from '../types';
@@ -41,6 +43,7 @@ const sizeStyles: Record<ButtonSize, string> = {
  * @param {string} size - The size of the button ('sm', 'md', 'lg')
  * @param {boolean} disabled - Whether the button is disabled
  * @param {boolean} fullWidth - Whether the button should take the full width
+ * @param {Function} onActionClick - Custom click handler for button actions
  */
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -52,11 +55,23 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       fullWidth = false,
       className,
       disabled,
+      onActionClick,
       'aria-label': ariaLabel,
       ...props
     },
     ref
   ) => {
+    const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+      if (disabled) {
+        event.preventDefault();
+        return;
+      }
+
+      if (onActionClick) {
+        onActionClick(event);
+      }
+    };
+
     // Determine the correct style configuration
     const variantConfig = buttonStyles[color][buttonStyle];
 
@@ -81,6 +96,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         }
         role="button"
         tabIndex={disabled ? -1 : 0}
+        onClick={handleClick}
         {...props}
       >
         {children}

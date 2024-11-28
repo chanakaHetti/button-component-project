@@ -1,6 +1,12 @@
+'use client';
+
 import Button from '@/app/components/button';
 
 export default function Home() {
+  const handleAction = () => {
+    console.log('button click');
+  };
+
   return (
     <div className="container mx-auto p-6 space-y-6">
       <h1 className="text-3xl font-bold mb-6">Button Variants</h1>
@@ -55,6 +61,13 @@ export default function Home() {
           <Button fullWidth color="dark">
             Full Width
           </Button>
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <h2 className="text-xl font-semibold">Onclick Action</h2>
+        <div className="flex flex-wrap gap-4 items-center">
+          <Button onActionClick={handleAction}>Full Width</Button>
         </div>
       </div>
     </div>

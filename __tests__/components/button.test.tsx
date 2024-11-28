@@ -54,12 +54,20 @@ describe('Button Component', () => {
     expect(button).toHaveClass('custom-class');
   });
 
-  it('should fires onClick event when clicked', async () => {
-    const onClick = jest.fn();
-    render(<Button {...defaultProps} onClick={onClick} />);
+  it('should fires onActionClick event when clicked', async () => {
+    const onActionClick = jest.fn();
+    render(<Button {...defaultProps} onActionClick={onActionClick} />);
     const button = screen.getByRole('button', { name: 'Test Button' });
     await userEvent.click(button);
-    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(onActionClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('should not fire onActionClick or onClick when disabled', async () => {
+    const onActionClick = jest.fn();
+    render(<Button {...defaultProps} disabled onActionClick={onActionClick} />);
+    const button = screen.getByRole('button', { name: 'Test Button' });
+    await userEvent.click(button);
+    expect(onActionClick).not.toHaveBeenCalled();
   });
 
   it('should applies `aria-label` properly', () => {
@@ -72,5 +80,22 @@ describe('Button Component', () => {
     render(<Button {...defaultProps} disabled />);
     const button = screen.getByRole('button', { name: 'Test Button' });
     expect(button).toHaveAttribute('tabindex', '-1');
+  });
+
+  // Accessability aria-label branch (is else) handle to improve the test report
+  it('should use children as `aria-label` if children is a string', () => {
+    render(<Button {...defaultProps}>Button Text</Button>);
+    const button = screen.getByRole('button', { name: 'Button Text' });
+    expect(button).toHaveAttribute('aria-label', 'Button Text');
+  });
+
+  it('should set `aria-label` to undefined if children is not a string', () => {
+    render(
+      <Button {...defaultProps}>
+        <span>Button Element</span>
+      </Button>
+    );
+    const button = screen.getByRole('button');
+    expect(button).not.toHaveAttribute('aria-label');
   });
 });

@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
+
 import Button from '@/app/components/button';
 
 // Meta configuration for the Button component
@@ -8,7 +10,7 @@ const meta = {
   argTypes: {
     color: {
       control: { type: 'select' },
-      options: ['default', 'green', 'dark'],
+      options: ['green', 'dark'],
     },
     buttonStyle: {
       control: { type: 'select' },
@@ -18,6 +20,8 @@ const meta = {
       control: { type: 'select' },
       options: ['sm', 'md', 'lg'],
     },
+    fullWidth: { type: 'boolean' },
+    onActionClick: { action: 'clicked' },
   },
   parameters: {
     docs: {
@@ -44,6 +48,7 @@ export const GreenSolid: Story = {
     color: 'green',
     buttonStyle: 'solid',
     children: 'Green Solid',
+    onActionClick: action('Button clicked: Green Solid'),
   },
 };
 
@@ -52,6 +57,7 @@ export const GreenOutline: Story = {
     color: 'green',
     buttonStyle: 'outline',
     children: 'Green Outline',
+    onActionClick: action('Button clicked: Green Outline'),
   },
 };
 
@@ -68,6 +74,7 @@ export const GreenFullWidth: Story = {
     color: 'green',
     children: 'Green Full Width',
     fullWidth: true,
+    onActionClick: action('Button clicked: Green Full Width'),
   },
 };
 
@@ -76,6 +83,7 @@ export const DarkSolid: Story = {
     color: 'dark',
     buttonStyle: 'solid',
     children: 'Dark Solid',
+    onActionClick: action('Button clicked: Dark Solid'),
   },
 };
 
@@ -84,6 +92,7 @@ export const DarkOutline: Story = {
     color: 'dark',
     buttonStyle: 'outline',
     children: 'Dark Outline',
+    onActionClick: action('Button clicked: Dark Outline'),
   },
 };
 
@@ -100,6 +109,7 @@ export const DarkFullWidth: Story = {
     color: 'dark',
     children: 'Dark Full Width',
     fullWidth: true,
+    onActionClick: action('Button clicked: Dark Full Width'),
   },
 };
 
@@ -108,6 +118,7 @@ export const SmallButton: Story = {
   args: {
     size: 'sm',
     children: 'Small Button',
+    onActionClick: action('Button clicked: Small Button'),
   },
 };
 
@@ -115,6 +126,7 @@ export const MediumButton: Story = {
   args: {
     size: 'md',
     children: 'Medium Button',
+    onActionClick: action('Button clicked: Medium Button'),
   },
 };
 
@@ -122,5 +134,6 @@ export const LargeButton: Story = {
   args: {
     size: 'lg',
     children: 'Large Button',
+    onActionClick: action('Button clicked: Large Button'),
   },
 };
