@@ -1,6 +1,6 @@
 'use client';
 
-import React, { forwardRef, MouseEvent } from 'react';
+import React, { MouseEvent, useRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 import { ButtonProps, ButtonSize } from '../types';
@@ -39,71 +39,70 @@ const sizeStyles: Record<ButtonSize, string> = {
  * A customizable button component with different styles, colors, and sizes.
  *
  * @param {string} color - The color of the button ('green', 'dark')
- * @param {string} buttonStyle - The button style ('solid', 'outline')
+ * @param {string} [buttonStyle] - The button style ('solid', 'outline')
  * @param {string} size - The size of the button ('sm', 'md', 'lg')
  * @param {boolean} disabled - Whether the button is disabled
  * @param {boolean} fullWidth - Whether the button should take the full width
  * @param {Function} onActionClick - Custom click handler for button actions
  */
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      children,
-      color = 'green',
-      buttonStyle = 'solid',
-      size = 'md',
-      fullWidth = false,
-      className,
-      disabled,
-      onActionClick,
-      'aria-label': ariaLabel,
-      ...props
-    },
-    ref
-  ) => {
-    const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
-      if (disabled) {
-        event.preventDefault();
-        return;
+const Button = ({
+  children,
+  color = 'green',
+  buttonStyle = 'solid',
+  size = 'md',
+  fullWidth = false,
+  className,
+  disabled,
+  onActionClick,
+  ref,
+  'aria-label': ariaLabel,
+  ...props
+}: ButtonProps) => {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const resolvedRef = ref || buttonRef;
+
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+    if (disabled) {
+      event.preventDefault();
+      return;
+    }
+
+    if (onActionClick) {
+      onActionClick(event);
+    }
+  };
+
+  // Determine the correct style configuration
+  const variantConfig = buttonStyles[color][buttonStyle];
+
+  const combinedClassName = twMerge(
+    'rounded-md transition-all duration-200 ease-in-out',
+    'focus:outline-none focus:ring-2 focus:ring-offset-2',
+    'disabled:opacity-50 disabled:cursor-not-allowed',
+    variantConfig.base,
+    sizeStyles[size],
+    fullWidth && 'w-full',
+    className
+  );
+
+  return (
+    <button
+      ref={resolvedRef}
+      className={combinedClassName}
+      disabled={disabled}
+      aria-disabled={disabled}
+      aria-label={
+        ariaLabel || (typeof children === 'string' ? children : undefined)
       }
-
-      if (onActionClick) {
-        onActionClick(event);
-      }
-    };
-
-    // Determine the correct style configuration
-    const variantConfig = buttonStyles[color][buttonStyle];
-
-    const combinedClassName = twMerge(
-      'rounded-md transition-all duration-200 ease-in-out',
-      'focus:outline-none focus:ring-2 focus:ring-offset-2',
-      'disabled:opacity-50 disabled:cursor-not-allowed',
-      variantConfig.base,
-      sizeStyles[size],
-      fullWidth && 'w-full',
-      className
-    );
-
-    return (
-      <button
-        ref={ref}
-        className={combinedClassName}
-        disabled={disabled}
-        aria-disabled={disabled}
-        aria-label={
-          ariaLabel || (typeof children === 'string' ? children : undefined)
-        }
-        role="button"
-        tabIndex={disabled ? -1 : 0}
-        onClick={handleClick}
-        {...props}
-      >
-        {children}
-      </button>
-    );
-  }
-);
+      role="button"
+      tabIndex={disabled ? -1 : 0}
+      onClick={handleClick}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
 
 Button.displayName = 'Button';
 

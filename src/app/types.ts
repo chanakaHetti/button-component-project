@@ -1,4 +1,4 @@
-import { MouseEvent } from 'react';
+import { MouseEvent, Ref } from 'react';
 
 export type ColorVariant = 'green' | 'dark';
 export type ButtonStyle = 'solid' | 'outline';
@@ -11,4 +11,5 @@ export interface ButtonProps
   size?: ButtonSize;
   fullWidth?: boolean;
   onActionClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+  ref?: Ref<HTMLButtonElement>;
 }

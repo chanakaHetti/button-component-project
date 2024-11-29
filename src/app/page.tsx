@@ -14,7 +14,11 @@ export default function Home() {
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Green Variants</h2>
         <div className="flex flex-wrap gap-4">
-          <Button color="green" buttonStyle="solid">
+          <Button
+            color="green"
+            buttonStyle="solid"
+            className="btn-component bg-blue-700"
+          >
             Green Solid
           </Button>
           <Button color="green" buttonStyle="outline">
